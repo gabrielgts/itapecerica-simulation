@@ -2,10 +2,9 @@
 import pandas as pd
 import numpy as np
 
-
+# normalizacao dos dados
 from sklearn.model_selection import train_test_split
 
-# normalização dos dados
 from sklearn.preprocessing import StandardScaler
 
 # Modelo sequemcial (inpute de uma camada e output da outra)
@@ -14,6 +13,7 @@ from keras.models import Sequential
 # Perceptron Multicamada
 from keras.layers import Dense
 
+# datasheet
 white = pd.read_csv("http://archive.ics.uci.edu/ml/machine-learning-databases/wine-quality/winequality-white.csv", sep=';') 
 red   = pd.read_csv("http://archive.ics.uci.edu/ml/machine-learning-databases/wine-quality/winequality-red.csv", sep=';')
 
@@ -27,7 +27,7 @@ y = np.ravel(wines.type)
 
 X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.33, random_state=42)
 
-# normalização dos dados
+# normalizacao dos dados
 scaler  = StandardScaler().fit(X_train)
 X_train = scaler.transform(X_train)
 X_test  = scaler.transform(X_test)
@@ -41,10 +41,10 @@ model.add(Dense(12, activation='relu', input_shape=(11,)))
 # Camada oculta
 model.add(Dense(8, activation='relu'))
 
-# Camada de saída
+# Camada de saida
 model.add(Dense(1, activation='sigmoid'))
 
-# compilação : Optmização do processamento,  
+# compilacao : Optmizacao do processamento,  
 model.compile(loss='binary_crossentropy',
               optimizer='adam',
               metrics=['accuracy'])
