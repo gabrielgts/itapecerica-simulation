@@ -16,9 +16,6 @@ print(dataset.columns.tolist())
 
 dataset = dataset.fillna(0)
 
-print(dataset['Turbidez'])
-
-
 dataset['IQA'] = (dataset['Oxigênio dissolvido'] * 0.17) + \
     (dataset['Coliformes termotolerantes'] * 0.15) + \
     (dataset['pH laboratório'] * 0.12) + \
