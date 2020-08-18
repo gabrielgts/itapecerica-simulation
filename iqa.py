@@ -13,8 +13,8 @@ print(dataset.columns.tolist())
 dataset = dataset.fillna(0)
 
 dataset['IQA'] = (dataset['Oxigenio dissolvido'].astype('float32') ** 0.17) * \
-    (dataset['Coliformes termotolerantes'].astype('float32') ** 0.15) * \
-    (dataset['pH laboratorio'].astype('float32') ** 0.12) * \
+    (dataset['Coliformes totais'].astype('float32') ** 0.15) * \
+    (dataset['pH in loco'].astype('float32') ** 0.12) * \
     (dataset['Demanda Bioquimica de Oxigenio'].astype('float32') ** 0.1) * \
     ((dataset['Nitrogenio amoniacal total'].astype('float32') + dataset['Nitrogenio organico'].astype('float32')) ** 0.1) * \
     (dataset['Fosforo total'].astype('float32') ** 0.1) * \
@@ -22,11 +22,12 @@ dataset['IQA'] = (dataset['Oxigenio dissolvido'].astype('float32') ** 0.17) * \
     (dataset['Turbidez'].astype('float32') ** 0.08) * \
     (dataset['Solidos totais'].astype('float32') ** 0.08)
 
+
 newDataset = pd.DataFrame({
     'IQA': dataset['IQA'],
     'oxigenio_dissolvido': dataset['Oxigenio dissolvido'].astype('float32'),
-    'coliformes_termotolerantes': dataset['Coliformes termotolerantes'].astype('float32'),
-    'pH_laboratorio': dataset['pH laboratorio'].astype('float32'),
+    'coliformes_totais': dataset['Coliformes totais'].astype('float32'),
+    'pH_loco': dataset['pH in loco'].astype('float32'),
     'demanda_bioquimica_oxigenio': dataset['Demanda Bioquimica de Oxigenio'].astype('float32'),
     'nitrogenio_total': dataset['Nitrogenio amoniacal total'].astype('float32') + dataset['Nitrogenio organico'].astype('float32'),
     'fosforo_total': dataset['Fosforo total'].astype('float32'),
